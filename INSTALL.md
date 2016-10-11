@@ -3,7 +3,7 @@ There are two parts to this project:
 ###SNAPP
 
 1. Grab this code
-2. `mvn clean install sakai:deploy`
+2. `mvn clean install sakai:deploy` TODO this bit.
 3. Start Tomcat
 4. Open Firefox and enter the URL http://localhost:8080/SNAPP/index.html
 5. Right click on SNAPP V2 Beta link and bookmark the link.
