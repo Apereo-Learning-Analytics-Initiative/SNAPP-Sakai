@@ -1,6 +1,6 @@
 There are two parts to this project:
 
-**SNAPP
+###SNAPP
 
 1. Grab this code
 2. `mvn clean install sakai:deploy`
@@ -8,7 +8,7 @@ There are two parts to this project:
 4. Open Firefox and enter the URL http://localhost:8080/SNAPP/index.html
 5. Right click on SNAPP V2 Beta link and bookmark the link.
 
-**File Saver
+###File Saver
 
 TODO this is to be re-written as a servlet
 
