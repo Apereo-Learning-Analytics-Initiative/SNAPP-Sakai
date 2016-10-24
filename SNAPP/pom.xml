@@ -90,12 +90,12 @@
 				<version>3.2.6</version>
 			</dependency>
 
-			<!-- can't find snapp44.jar --!>
+			<!-- can't find snapp44.jar -->
 
 		</dependencies>
 	</dependencyManagement>
 	
 	<build>
-		    <finalName>${artifactId}</finalName>
+		    <finalName>${project.artifactId}</finalName>
 	</build>
 </project>
