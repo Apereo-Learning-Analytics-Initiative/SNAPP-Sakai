@@ -9,7 +9,6 @@
 		<groupId>org.sakaiproject</groupId>
 		<artifactId>master</artifactId>
 		<version>12-SNAPSHOT</version>
-		<!--<relativePath>../master/pom.xml</relativePath>-->
 	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -95,6 +94,16 @@
 	</dependencyManagement>
 	
 	<build>
-		    <finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+		<finalName>${project.artifactId}</finalName>
 	</build>
 </project>
