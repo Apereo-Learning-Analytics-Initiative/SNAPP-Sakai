@@ -14,7 +14,6 @@
 		<version>1.0</version>
 	</parent>
 	
-	<dependencyManagement>
 		<dependencies>
 			<!-- additional third party dependencies -->
 			<dependency>
@@ -87,10 +86,28 @@
 				<artifactId>wstx-asl</artifactId>
 				<version>3.2.6</version>
 			</dependency>
+			<!--
+			<dependency>
+				<groupId>org.apereo.learninganalytics</groupId>
+				<artifactId>snapp-sociogram</artifactId>
+				<version>1.0</version>
+			</dependency>
+			-->
 		</dependencies>
-	</dependencyManagement>
 	
 	<build>
 		<finalName>${project.artifactId}</finalName>
+		
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+		
 	</build>
 </project>

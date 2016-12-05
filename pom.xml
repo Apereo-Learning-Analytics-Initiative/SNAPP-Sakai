@@ -102,4 +102,12 @@
 		</dependencies>
 	</dependencyManagement>
 	
+	  <repositories>
+    <repository>
+      <id>atlassian</id>
+      <name>atlassian</name>
+      <url>https://maven.atlassian.com/content/repositories/atlassian-public/</url>
+    </repository>
+  </repositories>
+	
 </project>
