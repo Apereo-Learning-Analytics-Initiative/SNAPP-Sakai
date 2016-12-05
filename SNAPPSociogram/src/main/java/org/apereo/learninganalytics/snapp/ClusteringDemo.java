@@ -1,4 +1,4 @@
-package SNAPP;
+package org.apereo.learninganalytics.snapp;
 
 /*
 * Copyright (c) 2003, the JUNG Project and the Regents of the University
