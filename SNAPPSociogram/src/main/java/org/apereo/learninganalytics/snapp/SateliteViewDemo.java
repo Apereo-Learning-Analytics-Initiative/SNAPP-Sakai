@@ -1,4 +1,4 @@
-package SNAPP;
+package org.apereo.learninganalytics.snapp;
 
 
 import java.awt.BasicStroke;

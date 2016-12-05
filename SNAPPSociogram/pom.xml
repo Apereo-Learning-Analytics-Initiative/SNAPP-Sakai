@@ -14,6 +14,29 @@
 		<artifactId>snapp-base</artifactId>
 		<version>1.0</version>
 	</parent>
-	
-	
+
+	<dependencies>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+		</dependency>
+		
+		<!--  unclear if this is correct dependency -->
+		<dependency>
+  		 		<groupId>net.sourceforge.collections</groupId>
+   			<artifactId>collections-generic</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jung</groupId>
+			<artifactId>jung-visualization</artifactId>
+		</dependency>
+		<dependency>
+		   <groupId>com.michaelbaranov</groupId>
+		   <artifactId>microba</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jung</groupId>
+			<artifactId>jung-graph-impl</artifactId>
+		</dependency>
+	</dependencies>
 </project>
