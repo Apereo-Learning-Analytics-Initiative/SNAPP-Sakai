@@ -402,7 +402,7 @@ public class SNAPPDisplay extends JApplet implements ActionListener
     	{
     		try
     		{
-    			exportData = SNAPP.Export.VNA(snappDB.GetPostCountsPerUser("1"), snappDB.GetConnectionCountsPerForumByDate("","","1"));
+    			exportData = Export.VNA(snappDB.GetPostCountsPerUser("1"), snappDB.GetConnectionCountsPerForumByDate("","","1"));
     		}
         	catch (Exception ex1) 
         	{
@@ -414,7 +414,7 @@ public class SNAPPDisplay extends JApplet implements ActionListener
     	{
     		try
     		{
-    			exportData = SNAPP.Export.GEXF(snappDB.GetPostCountsPerUser("1"), snappDB.GetConnectionCountsPerForumByDate("","","1"));
+    			exportData = Export.GEXF(snappDB.GetPostCountsPerUser("1"), snappDB.GetConnectionCountsPerForumByDate("","","1"));
     		}
         	catch (Exception ex1) 
         	{
@@ -426,7 +426,7 @@ public class SNAPPDisplay extends JApplet implements ActionListener
     	{
     		try
     		{
-    			exportData = SNAPP.Export.GEXFD(snappDB.GetPostCountsPerUser("1"), snappDB.GetConnectionCountsPerForumByDate("","","1"), snappDB.GetMinDate("1"), snappDB.GetMaxDate("1") );
+    			exportData = Export.GEXFD(snappDB.GetPostCountsPerUser("1"), snappDB.GetConnectionCountsPerForumByDate("","","1"), snappDB.GetMinDate("1"), snappDB.GetMaxDate("1") );
     		} 
         	catch (Exception ex1) 
         	{

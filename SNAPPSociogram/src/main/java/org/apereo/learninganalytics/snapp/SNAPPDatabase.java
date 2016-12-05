@@ -1,15 +1,9 @@
 package org.apereo.learninganalytics.snapp;
 
-import java.text.DecimalFormat;
-import java.util.*;
 import java.sql.ResultSet;
-
-import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-
-import SNAPP.DBAccess;
 
 
 public class SNAPPDatabase {

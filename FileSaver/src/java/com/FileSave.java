@@ -16,6 +16,7 @@ public class FileSave extends HttpServlet {
 		String fileExt = null;
 		String data = null;
 		
+		//TODO check for null before switch
 		switch (request.getParameter("fileext")) {
 		case "jpg": 
 			fileExt = ".jpg";
