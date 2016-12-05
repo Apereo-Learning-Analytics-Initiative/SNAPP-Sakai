@@ -1,22 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-	<name>SNAPP</name>
+	<name>SNAPP Base</name>
 	
 	<groupId>org.apereo.learninganalytics</groupId>
-	<artifactId>snapp</artifactId>
-	<packaging>war</packaging>
+	<artifactId>snapp-base</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0</version>
 	
-	<parent>
-		<groupId>org.apereo.learninganalytics</groupId>
-		<artifactId>snapp-base</artifactId>
-		<version>1.0</version>
-	</parent>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
+	<inceptionYear>2016</inceptionYear>
+	
+	<modules>
+		<module>FileSaver</module>
+		<module>SNAPP</module>
+		<module>SNAPPSociogram</module>
+	</modules>
 	
 	<dependencyManagement>
 		<dependencies>
-			<!-- additional third party dependencies -->
 			<dependency>
    		 		<groupId>net.sourceforge.collections</groupId>
     			<artifactId>collections-generic</artifactId>
@@ -87,10 +93,13 @@
 				<artifactId>wstx-asl</artifactId>
 				<version>3.2.6</version>
 			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.4</version>
+				<scope>provided</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	
-	<build>
-		<finalName>${project.artifactId}</finalName>
-	</build>
 </project>
