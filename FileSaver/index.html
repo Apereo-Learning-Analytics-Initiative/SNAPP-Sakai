@@ -1,16 +1,28 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>File Saver Test</title>
     </head>
     <body>
         <h1>File Saver Test</h1>
-        <form action="http://localhost:8081/FileSaver/FileSave.php" method="post">
-          <textarea name="imagedata" rows="15" cols="80"> </textarea>
-          <input type="hidden" name="fileext" value="gexf">
-          <input type="submit" name="Send" value="Save File">
+        <form action="http://localhost:8080/filesaver" method="POST" enctype="multipart/form-data">
+          <div>
+          	<label for="imagedata">Data:</label>
+          	<textarea name="imagedata" rows="15" cols="80"></textarea>
+          </div>
+          <div>
+	          <label for="fileext">Type:</label>
+	          <select name="fileext">
+	          	<option value="png">png</option>
+	          	<option value="jpg">jpg</option>
+	          	<option value="vna">vna</option>
+	          	<option value="gexf">gexf</option>
+	          	<option value="annotations">annotations</option>
+	          </select>
+          </div>
+          <div>
+          	<input type="submit" name="Send" value="Save File">
+          </div>
         </form>
     </body>
 </html>

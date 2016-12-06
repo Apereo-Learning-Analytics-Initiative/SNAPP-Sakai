@@ -5,12 +5,12 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
 http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
 	<servlet>
-		<servlet-name>File Save</servlet-name>
-		<servlet-class>com.FileSave</servlet-class>
+		<servlet-name>FileSaver</servlet-name>
+		<servlet-class>org.apereo.learninganalytics.snapp.filesaver.FileSaver</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>File Save</servlet-name>
+		<servlet-name>FileSaver</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 </web-app>
