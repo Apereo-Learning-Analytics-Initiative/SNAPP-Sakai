@@ -51,7 +51,7 @@ A network diagram is a visual depiction of all interactions occurring among stud
 
 Install & Deployment of SNAPP
 ------------------------------
-Refer to https://github.com/steveswinsburg/SNAPPSakai-Beta/blob/master/INSTALL.md
+Refer to INSTALL.md
 
 
 SNAPP Demo Video
