@@ -13,7 +13,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.text.ParseException;
 
-
 import org.hsqldb.jdbc.jdbcDataSource;
 
 public class DBAccess {
@@ -29,7 +28,7 @@ public class DBAccess {
         // of the db.
         // It can contain directory names relative to the
         // current working directory
-        jdbcDataSource dataSource = new jdbcDataSource();
+    	jdbcDataSource dataSource = new jdbcDataSource();
 
         dataSource.setDatabase("jdbc:hsqldb:mem:" + db_file_name_prefix);
 

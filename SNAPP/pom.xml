@@ -86,16 +86,15 @@
 				<artifactId>wstx-asl</artifactId>
 				<version>3.2.6</version>
 			</dependency>
-			<!--
 			<dependency>
 				<groupId>org.apereo.learninganalytics</groupId>
 				<artifactId>snapp-sociogram</artifactId>
 				<version>1.0</version>
 			</dependency>
-			-->
 		</dependencies>
 	
 	<build>
-		<finalName>${project.artifactId}</finalName>
+		<finalName>SNAPP</finalName>
 	</build>
+	
 </project>

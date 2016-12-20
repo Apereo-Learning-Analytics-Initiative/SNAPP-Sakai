@@ -78,7 +78,7 @@ public class SNAPPDatabase {
     	String AddForumQuery;
     	try 
         {
-    	intervention_date = SNAPP.Utils.DateTimeParse(intervention_date,"US");
+    	intervention_date = Utils.DateTimeParse(intervention_date,"US");
     	System.out.println("Intervention Date: " + intervention_date);
     	AddForumQuery = "INSERT INTO annotations_table(annotation, intervention_date, lmsforum_id) VALUES('" + annotation + "','" + intervention_date + "','" + lmsforum_id + "')";
         
@@ -94,7 +94,7 @@ public class SNAPPDatabase {
     {
 
     	String AddPostQuery;
-    	Date_Sent = SNAPP.Utils.DateTimeParse(Date_Sent,LMSType);
+    	Date_Sent = Utils.DateTimeParse(Date_Sent,LMSType);
     	//System.out.println("Date_Sent:" + Date_Sent);
     	AddPostQuery = "INSERT INTO posts_table(posted_by, replied_to, date_sent, time_sent, lmsforum_id) VALUES('" + person + "','" + replyto_person + "','" + Date_Sent + "','" + Time_Sent + "','" + lmsforum_id + "')";
         try 
