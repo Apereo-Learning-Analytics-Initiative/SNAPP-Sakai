@@ -1,7 +1,7 @@
 //var serverPath = "http://www.snappvis.org/SNAPP2/";
 var serverPath = "http://localhost:8080/SNAPP/";
-var foundLMSForum = "No";
-var foundLMSForumExpanded = "No";
+var foundLMSForum = false;
+var foundLMSForumExpanded = false;
 var LMS ="";
 
 function attachScript(html_doc, script)
@@ -24,21 +24,21 @@ function traverse(w)
 			{
 				//alert("Moodle");
 				// Moodle Individual Thread View && Moodle Forum View with links to Multiple Threads
-				foundLMSForum = "Yes"; foundLMSForumExpanded = "Yes"; LMS = "moodle";
+				foundLMSForum = true; foundLMSForumExpanded = true; LMS = "moodle";
 				attachScript(html_doc, script);
 			}
 			else if (docLocation.indexOf("discussions/admin/forum_topics_list.d2l") != -1)
 			{
 				// D2L Multi Forum Thread - For D2L Version 9
-				foundLMSForum = "Yes"; foundLMSForumExpanded = "Yes"; LMS = "d2l";
+				foundLMSForum = true; foundLMSForumExpanded = true; LMS = "d2l";
 				//alert("D2L Multiple Forum Found D2L 9");
 				attachScript(html_doc, script);
 			}
 			else if ((document.getElementsByClassName("portletBody")[0].contentDocument.URL.indexOf("/discussionForum/message/dfViewThread") != -1) || (document.getElementsByClassName("portletBody")[0].contentDocument.URL.indexOf("/discussionForum/message/dfFlatView") != -1) )
 			{
-				//alert("sakai CLE");
+				alert("sakai CLE");
 				// Moodle Individual Thread View && Moodle Forum View with links to Multiple Threads
-				foundLMSForum = "Yes"; LMS = "sakai"; foundLMSForumExpanded = "Yes"; 
+				foundLMSForum = true; LMS = "sakai"; foundLMSForumExpanded = true; 
 				attachScript(html_doc, script);
 			}
 
@@ -51,7 +51,7 @@ function traverse(w)
 				if (((docLocation.indexOf("webct/newMessageThread.dowebct") != -1)|| (docLocation.indexOf("/discussionHomepageView.dowebct") != -1) || (docLocation.indexOf("serve_bulletin") != -1))) // ACTION=DESIGN_LIST or LIST for older version of Web CT
 				{
 					//alert("sna_bookmarklet: WebCT");
-					foundLMSForum = "Yes"; foundLMSForumExpanded = "Yes"; LMS = "webct";
+					foundLMSForum = true; foundLMSForumExpanded = true; LMS = "webct";
 					//alert("LMS: " + LMS);
 					if (typeof w.frames[i].getSNAPPVersion == 'function')
 					{
@@ -66,7 +66,7 @@ function traverse(w)
 				}
 				else if ((docLocation.indexOf("do/message?action=list_messages") != -1) || (docLocation.indexOf("do/forum?action=list_threads") != -1) || (docLocation.indexOf("discussionboard/do/conference") != -1) || (docLocation.indexOf("discussionboard/do/message") != -1)) 
 				{
-					foundLMSForum = "Yes"; foundLMSForumExpanded = "Yes"; LMS = "blackboard";
+					foundLMSForum = true; foundLMSForumExpanded = true; LMS = "blackboard";
 					// embed SNA Analysis script in this window
 					// either individual thread or multiple threads from list_forum
 					if (typeof w.frames[i].getSNAPPVersion == 'function') {
@@ -79,7 +79,7 @@ function traverse(w)
 				}
 				else if ((docLocation.indexOf("Objects/DiscussionForums/Threads2.aspx") != -1)) 
 				{
-					foundLMSForum = "Yes"; foundLMSForumExpanded = "Yes"; LMS = "angel";
+					foundLMSForum = true; foundLMSForumExpanded = true; LMS = "angel";
 					//alert("ANGEL!");
 
 					// embed SNA Analysis script in this window
@@ -95,16 +95,16 @@ function traverse(w)
 				}
 				else if ((docLocation.indexOf("newMessageThread.dowebct") != -1)) {
 					// forum displayed but not expanded
-					foundLMSForum = "Yes"; foundLMSForumExpanded = "No"; LMS = "webct";
+					foundLMSForum = true; foundLMSForumExpanded = false; LMS = "webct";
 				}
 				else if ((docLocation.indexOf("do/forum?action=list_threads") != -1)) {
 					// forum displayed but not expanded
-					foundLMSForum = "Yes"; foundLMSForumExpanded = "No"; LMS = "blackboard";
+					foundLMSForum = true; foundLMSForumExpanded = false; LMS = "blackboard";
 				}
 				else if ((docLocation.indexOf("discussions/messageLists/message_list_gridstyle.d2l") != -1)||(docLocation.indexOf("discussions/admin/forum_topics_list.d2l") != -1)||(docLocation.indexOf("discussions/messageLists/message_list_readingstyle.d2l") != -1))
 				{
 					// D2L Forum Thread
-					foundLMSForum = "Yes"; foundLMSForumExpanded = "Yes"; LMS = "d2l";
+					foundLMSForum = true; foundLMSForumExpanded = true; LMS = "d2l";
 					//alert("D2L Forum Found NOW");
 					// embed SNA Analysis script in this window
 					// either individual thread or multiple threads from list_forum
@@ -130,13 +130,13 @@ function traverse(w)
 
 traverse(window);
 
-if (foundLMSForum=="No")
+if (foundLMSForum==false)
 {
 	alert("SNAPP is either unable to determine the LMS you are using or you are trying to analyse a page that does not contain a forum. SNAPP works with WebCT Vista, WebCT CE, Blackboard (versions 7, 8 and 9), Sakai(2.8x and 2.9x) and Moodle.");
 }
 else
 {
-	if (foundLMSForumExpanded=="No")
+	if (foundLMSForumExpanded==false)
 	{
 		if (LMS=="webct")
 		{
