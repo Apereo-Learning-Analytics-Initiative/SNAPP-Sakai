@@ -34,9 +34,9 @@ function traverse(w)
 				//alert("D2L Multiple Forum Found D2L 9");
 				attachScript(html_doc, script);
 			}
-			else if ((document.getElementsByClassName("portletBody")[0].contentDocument.URL.indexOf("/discussionForum/message/dfViewThread") != -1) || (document.getElementsByClassName("portletBody")[0].contentDocument.URL.indexOf("/discussionForum/message/dfFlatView") != -1) )
+			else if ((document.getElementById("msgForum").action.indexOf("/discussionForum/message/dfViewThread") != -1) || (document.getElementById("msgForum").action.indexOf("/discussionForum/message/dfFlatView") != -1))
 			{
-				alert("sakai CLE");
+				//alert("sakai CLE");
 				// Moodle Individual Thread View && Moodle Forum View with links to Multiple Threads
 				foundLMSForum = true; LMS = "sakai"; foundLMSForumExpanded = true; 
 				attachScript(html_doc, script);
