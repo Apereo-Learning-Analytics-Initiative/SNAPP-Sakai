@@ -944,8 +944,8 @@ function makeSNAInterface(divid)
   jQuery.noConflict();
   jQuery(divid).append(snaInterface);
   jQuery("#SNAPPContainer").html(BuildSNAHTML);
-  jQuery('#snappcontainer').tabs();
-  jQuery('#snappcontainer').bind('tabsshow', function(event, ui) {
+  jQuery('#SNAPPContainer').tabs();
+  jQuery('#SNAPPContainer').bind('tabsshow', function(event, ui) {
     if (ui.index == 0)
     {
       if (line2.length>0)
