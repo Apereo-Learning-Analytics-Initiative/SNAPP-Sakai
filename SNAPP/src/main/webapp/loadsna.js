@@ -9,8 +9,8 @@ var jsList = new Array("js/jquery-1.4.2.min.js","jquery-ui-1.8.6.custom/js/jquer
 var jsIEList = new Array("js/excanvas.min.js");
 var cssList = new Array("css/style.css?uniqueCache="+ (new Date()).getTime(),"css/jquery.jqplot.min.css", "css/jquery.tablesorter.pager.css", "jquery-ui-1.8.6.custom/css/redmond/jquery-ui-1.8.6.custom.css?uniqueCache="+ (new Date()).getTime());
 //var lmsList = new Array();
-function determineCurrentLMS()
-{
+function determineCurrentLMS() 
+{	
 	var docLocation = document.location.href;
 	var LMS = "";
 	if ((docLocation.indexOf("mod/forum/discuss.php") != -1) || (docLocation.indexOf("mod/forum/view.php") != -1)) 
@@ -53,7 +53,7 @@ function determineCurrentLMS()
 		// D2L Forum Thread
 		LMS = "angel";
 	}
-	else if (document.getElementsByClassName("portletMainIframe")[0].contentDocument.URL.indexOf("/discussionForum/message/dfViewThread") != -1 || document.getElementsByClassName("portletMainIframe")[0].contentDocument.URL.indexOf("/discussionForum/message/dfFlatView") != -1)
+	else if ((document.getElementById("msgForum").action.indexOf("/discussionForum/message/dfViewThread") != -1) || (document.getElementById("msgForum").action.indexOf("/discussionForum/message/dfFlatView") != -1))
 	{
 		// Sakai CLE Forum Thread
 		LMS = "sakai";
@@ -169,8 +169,8 @@ function runSNA()
 
 	try
 	{
-		if ((document.getElementsByClassName("portletMainIframe")[0].contentDocument.URL.indexOf("/discussionForum/message/dfViewThread") != -1) || (document.getElementsByClassName("portletMainIframe")[0].contentDocument.URL.indexOf("/discussionForum/message/dfFlatView") != -1))
-		{ 
+		if ((document.getElementById("msgForum").action.indexOf("/discussionForum/message/dfViewThread") != -1) || (document.getElementById("msgForum").action.indexOf("/discussionForum/message/dfFlatView") != -1))
+		{
 			lms = "sakai";
 		}
 	}
@@ -208,7 +208,6 @@ function runSNA()
 
 	else if (lms == "sakai")
 	{
-
 		currLMS = "sakai";
 		//alert("initiating perform social analysis");
 		PerformSocialAnalysisSakai();
