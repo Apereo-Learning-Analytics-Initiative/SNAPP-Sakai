@@ -32,16 +32,14 @@ function PerformSocialAnalysisSakai()
 	var forumHierarchyList = Create2DArray(100);
 
 	// navigates through each of the forum message meta data to isolate the required information 
-	for (i=0; i < allForumPostsTables.length; i++)
-	{
+	for (i=0; i < allForumPostsTables.length; i++) {
 		metaData = allForumPostsTables[i].innerText;
 		
 		//alert("forumUser: " + forumUser);
 
 		// Isolating the forum user responsible for posting the forum message
 		// TODO: Check if this actually catches the case where there's no user name
-		if (metaData.indexOf('(') > 0)
-		{
+		if (metaData.indexOf('(') > 0) {
 			forumUser = metaData.substring(0,metaData.indexOf('(')-1);
 		} else {
 			forumUser = "unknown";
@@ -97,10 +95,10 @@ function PerformSocialAnalysisSakai()
 		// The attachments do not have the forum padding information and therefore results in a exception.
 		// The idea is to continue the loop to process the next row count information when the processor encounters attachments.
 
-		try{
+		try {
 			forumHierarchyList[currentPostHierPadding][forumHierarchyList[currentPostHierPadding].length] = forumUser ;
 		}
-		catch(e){
+		catch(e) {
 			continue;
 		}
 
@@ -112,11 +110,11 @@ function PerformSocialAnalysisSakai()
 		reply_to = "-";
 
 		// Forum hierarchy "0" represents that the user is the forum owner.
-		if (currentPostHierPadding == 0){
+		if (currentPostHierPadding == 0) {
 			forumCreator = forumUser;
 			//alert(" forumUser:" + forumUser + " postedOn:" + postedOn + " reply_to:" + reply_to);
 		}
-		else{
+		else {
 			// navigate through the forum hierarchy array and find the previous level of indentation and the last forum user. This gives us the information as to whom the user is replying to. 
 			reply_to = forumHierarchyList[currentPostHierPadding - 1][forumHierarchyList[currentPostHierPadding - 1].length - 1];
 			//alert(" forumUser:" + forumUser + " postedOn:" + postedOn + " reply_to:" + reply_to);
@@ -125,14 +123,11 @@ function PerformSocialAnalysisSakai()
 		// Creating SNA_relationships
 		sna_relationship = forumUser + "_" + reply_to;
 		//alert(sna_relationship);
-		if (replies[sna_relationship])
-		{
+		if (replies[sna_relationship]) {
 			replies[sna_relationship] += 1;
 		}
-		else
-		{
+		else {
 			replies[sna_relationship] = 1;
-
 		}
 
 		totalposts = totalposts + 1;
@@ -141,20 +136,16 @@ function PerformSocialAnalysisSakai()
 		// Hence we use Moodle as a parameter to help the application recognize the forum posts and process visualization. 
 
 		AddPost(forumUser, reply_to, postedOn, 1, "Sakai");
-
 	}
 
 	//alert("Level 0:" +forumHierarchyList[0]);
 	//alert("Level 1:" +forumHierarchyList[1]);
 	//alert("Level 2:" +forumHierarchyList[2]);
 	//alert("Level 3:" +forumHierarchyList[3]);
-
-
 }
 
 
-function ConvertMonth(month)
-{
+function ConvertMonth(month) {
 
 	month = month.replace("Jan", "January");
 	month = month.replace("Feb", "February");
@@ -170,7 +161,6 @@ function ConvertMonth(month)
 	month = month.replace("Dec", "December");
 
 	return month;
-
 }
 
 function trim(stringToTrim) { 
