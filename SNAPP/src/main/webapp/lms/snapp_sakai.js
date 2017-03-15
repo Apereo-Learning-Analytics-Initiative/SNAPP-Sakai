@@ -16,82 +16,67 @@ function Create2DArray(rows) {
 
 
 /* Performs a web crawl on the Sakai Forums thread and de threads the forum into Social Network Analysis
-   compatible posted_by , posted on , in reply_to , in forum thread on LMS Sakai format. The SNA relationships 
+   compatible forumUser , posted on , in reply_to , in forum thread on LMS Sakai format. The SNA relationships 
    forwarded feed the SNAPP visualization engine to help the faculty identify the learning patterns of the students.*/
 
 
 function PerformSocialAnalysisSakai()
 {
-
 	//alert("Perform Social analysis: Initiated!")
 
-
 	// message metadata is the class associated with each individual posts giving important details like the posted by , posted on information
-	allForumPostsTables = jQuery(".portletMainIframe").contents().find(".messageMetadata");
-
+	allForumPostsTables = $(".messageMetadata");
 
 	// This 2D array has the ability to handle forum thread reply nesting of depth 100. It contains information 
-	// about the siblings(forum users at the same Level in the reply hierarchy) in the   
-
+	// about the siblings(forum users at the same Level in the reply hierarchy)
 	var forumHierarchyList = Create2DArray(100);
-
 
 	// navigates through each of the forum message meta data to isolate the required information 
 	for (i=0; i < allForumPostsTables.length; i++)
 	{
-
-
-		posted_by = allForumPostsTables[i].innerHTML;
-		//alert("posted_by: " + posted_by);
+		metaData = allForumPostsTables[i].innerText;
+		
+		//alert("forumUser: " + forumUser);
 
 		// Isolating the forum user responsible for posting the forum message
-		if (posted_by.indexOf('>')!=-1)
+		// TODO: Check if this actually catches the case where there's no user name
+		if (metaData.indexOf('(') > 0)
 		{
-			posted_by = posted_by.substring(posted_by.indexOf('md">')+1,posted_by.length);
-			posted_by = posted_by.substring(3,posted_by.indexOf('<'));
+			forumUser = metaData.substring(0,metaData.indexOf('(')-1);
+		} else {
+			forumUser = "unknown";
 		}
-
-		posted_by = trim(posted_by);
-		//alert("posted_by:" + posted_by);
+		//alert("forumUser:" + forumUser);
 
 		// creates an array consisting of all forum users participating
-		if (forumusers[posted_by])
-		{
-			forumusers[posted_by] = forumusers[posted_by] + 1;
-		}
-		else
-		{
-			forumusers[posted_by] = 1;
-		}
-
-		//alert("forum users:" + forum users[posted_by]);
-
+		// TODO: What is the point of this array?
+//		if (forumUsers[forumUser]) {
+//			forumUsers[forumUser] = forumUsers[forumUser] + 1;
+//		}
+//		else {
+//			forumUsers[forumUser] = 1;
+//		}
+		//alert("forum users:" + forum users[forumUser]);
 		// Isolating the Forum Posted on information.
-		posted_on = allForumPostsTables[i].innerHTML; 
-
-		//alert("posted on innerHTML :" + posted_on);
-		posted_on = posted_on.substring(posted_on.indexOf('"> (')+1,posted_on.length);
-		//alert("posted on innerHTML :" + posted_on);
-		posted_on = posted_on.substring(3,posted_on.indexOf(')'));
-
-		//alert("posted_on:" + posted_on);
+		postedOn = metaData.substring(metaData.indexOf(')(')+2, metaData.lastIndexOf(')'));
+		alert("postedOn:" + postedOn);
 
 		// Converting date format for Sakai into Moodle format
 		// March 19, 2010, 7:55 AM --- moodle example
 		// Oct 16, 2012 12:57 PM ---- sakai example
-		month = ConvertMonth(posted_on.substring(0,3));
+		month = ConvertMonth(postedOn.substring(0,3));
 
-		date = posted_on.substring(3,posted_on.indexOf(',')+1);
+		date = postedOn.substring(3,postedOn.indexOf(',')+1);
 
-		year = posted_on.substring(posted_on.indexOf(',')+1,posted_on.indexOf(',')+6)
+		year = postedOn.substring(postedOn.indexOf(',')+1,postedOn.indexOf(',')+6)
 
-		time = posted_on.substring(posted_on.length - 8, posted_on.length);
+		time = postedOn.substring(postedOn.length - 8, postedOn.length);
 
 		//alert("Month: "+ month +" Date: " + date +" Year" + year +" time: "+time);
 
-		posted_on = month + date + year + ", "+ trim(time);
+		postedOn = month + date + year + ", "+ trim(time);
 
-		//alert("Formatted posted on:" +posted_on);
+		//alert("Formatted posted on:" +postedOn);
 
 		//retrieving padding left value for each row by finding the rowcount for the particular message.
 		row = jQuery(".portletMainIframe").contents().find("tr[rowcount="+i+"]")[0].innerHTML;
@@ -99,21 +84,21 @@ function PerformSocialAnalysisSakai()
 
 		//alert("padding left :" +currentPostHierPadding); //"   Next post padding:" +nextPostHierPadding);
 
-		//alert("postedby:" + posted_by);
-		//alert("postedon:" + posted_on);
+		//alert("postedby:" + forumUser);
+		//alert("postedon:" + postedOn);
 
 
 		// Convert the time to a format compatible with the visualization process
-		var posted_onObj = moment(posted_on);
-		posted_on = posted_onObj.format("D MMMM YYYY")
-		posted_on += ", " + trim(time);
+		var postedOnObj = moment(postedOn);
+		postedOn = postedOnObj.format("D MMMM YYYY")
+		postedOn += ", " + trim(time);
 
 		// Attachments which are actually part of the Forum post but each attachment is allocated a new row count. 
 		// The attachments do not have the forum padding information and therefore results in a exception.
 		// The idea is to continue the loop to process the next row count information when the processor encounters attachments.
 
 		try{
-			forumHierarchyList[currentPostHierPadding][forumHierarchyList[currentPostHierPadding].length] = posted_by ;
+			forumHierarchyList[currentPostHierPadding][forumHierarchyList[currentPostHierPadding].length] = forumUser ;
 		}
 		catch(e){
 			continue;
@@ -121,24 +106,24 @@ function PerformSocialAnalysisSakai()
 
 		//alert("Content: ["+currentPostHierPadding+"]["+(forumHierarchyList[currentPostHierPadding].length) - 1 +"] :"+ forumHierarchyList[currentPostHierPadding][(forumHierarchyList[currentPostHierPadding].length) - 1] );
 
-		threadowners[currentPostHierPadding] = posted_by;
+		threadowners[currentPostHierPadding] = forumUser;
 
 		forumCreator = '';
 		reply_to = "-";
 
 		// Forum hierarchy "0" represents that the user is the forum owner.
 		if (currentPostHierPadding == 0){
-			forumCreator = posted_by;
-			//alert(" posted_by:" + posted_by + " posted_on:" + posted_on + " reply_to:" + reply_to);
+			forumCreator = forumUser;
+			//alert(" forumUser:" + forumUser + " postedOn:" + postedOn + " reply_to:" + reply_to);
 		}
 		else{
 			// navigate through the forum hierarchy array and find the previous level of indentation and the last forum user. This gives us the information as to whom the user is replying to. 
 			reply_to = forumHierarchyList[currentPostHierPadding - 1][forumHierarchyList[currentPostHierPadding - 1].length - 1];
-			//alert(" posted_by:" + posted_by + " posted_on:" + posted_on + " reply_to:" + reply_to);
+			//alert(" forumUser:" + forumUser + " postedOn:" + postedOn + " reply_to:" + reply_to);
 		}
 
 		// Creating SNA_relationships
-		sna_relationship = posted_by + "_" + reply_to;
+		sna_relationship = forumUser + "_" + reply_to;
 		//alert(sna_relationship);
 		if (replies[sna_relationship])
 		{
@@ -155,7 +140,7 @@ function PerformSocialAnalysisSakai()
 		// Currently SNAPP does not have an integration with Sakai. Hence it does not handle addition of posts with Sakai as an LMS metric.
 		// Hence we use Moodle as a parameter to help the application recognize the forum posts and process visualization. 
 
-		AddPost(posted_by, reply_to, posted_on, 1, "Sakai");
+		AddPost(forumUser, reply_to, postedOn, 1, "Sakai");
 
 	}
 
