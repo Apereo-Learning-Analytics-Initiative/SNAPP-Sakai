@@ -211,7 +211,7 @@ function runSNA()
 		currLMS = "sakai";
 		//alert("initiating perform social analysis");
 		PerformSocialAnalysisSakai();
-		makeSNAInterface(".portletMainWrap");
+		makeSNAInterface(".Mrphs-pagebody");
 
 	}  
 	else if (currScript.indexOf("discussionboard/do/message?action=list_messages")!=-1)
