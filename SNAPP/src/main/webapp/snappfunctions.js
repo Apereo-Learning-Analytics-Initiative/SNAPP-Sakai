@@ -612,9 +612,9 @@ function buildVisualization()
 
   BuildVisulizationHTML += '<div id="PostsOverTime" style="margin-left:2px; width:100%; height:80px;"></div>';
 
-  BuildVisulizationHTML += '<applet name="SNAPPDBTest" width="100%" height="600" padding:1px 1px; mayscript="true" border="0" codebase="http://localhost:8080/SNAPP/" code="SNAPP.SNAPPDisplay" archive="jar/snapp44.jar,jar/microba-0.4.4.3.jar,jar/collections-generic-4.01.jar,jar/colt-1.2.0.jar,jar/commons-codec-1.3.jar,jar/concurrent-1.3.4.jar,jar/jung-algorithms-2.0.1.jar,jar/jung-api-2.0.1.jar,jar/jung-graph-impl-2.0.1.jar,jar/jung-io-2.0.1.jar,jar/jung-jai-2.0.1.jar,jar/jung-visualization-2.0.1.jar,jar/stax-api-1.0.1.jar,jar/wstx-asl-3.2.6.jar,jar/hsqldb.jar">';
+  BuildVisulizationHTML += '<applet name="SNAPP Sociogram" width="600" height="600" mayscript="true" border="0" codebase="http://localhost:8080/SNAPP/jar" archive="hsqldb-1.8.0.10.jar, wstx-asl-3.2.6.jar, stax-api-1.0.1.jar, jung-visualization-2.0.1.jar, jung-jai-2.0.1.jar, jung-io-2.0.1.jar, jung-graph-impl-2.0.1.jar, jung-api-2.0.1.jar, concurrent-1.3.4.jar, commons-codec-1.3.jar, colt-1.2.0.jar, collections-generic-4.01.jar, microba-0.4.4.3.jar, snapp-sociogram-1.0.jar, jung-algorithms-2.0.1.jar" code="org.apereo.learninganalytics.snapp.SNAPPDisplay">';
   BuildVisulizationHTML += '<param name="sna" value="' + param1 +'" />';
-  //BuildVisulizationHTML += '<param name="java_arguments" value="-Dsun.java2d.opengl=true"/>';
+  BuildVisulizationHTML += '<param name="java_arguments" value="-Dsun.java2d.opengl=true"/>';
   BuildVisulizationHTML += '<param name="java_arguments" value="-Djnlp.packEnabled=true"/>';
   BuildVisulizationHTML += ' To view this content, you need to install Java from <a href="http://java.com">java.com</a>';
   BuildVisulizationHTML += '</applet>';
@@ -752,6 +752,8 @@ function buildCredits()
 }
 
 function buildExport()
+
+//TODO: this needs to point to our filesaver
 {
   BuildExportHTML = "";
   //BuildExportHTML += '<form name="exportsnapp" method="post" action="http://www.snappvis.org/FileSaver/FileSave.php">';
