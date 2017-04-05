@@ -3,7 +3,7 @@
 
 
 //var serverPath = "http://www.snappvis.org/SNAPP2/";
-var serverPath = "http://localhost:8080/SNAPP/";
+var serverPath = "${sakai.host}/SNAPP/";
 var browserType = navigator.userAgent.toLowerCase();
 var jsList = new Array("js/jquery-1.4.2.min.js","jquery-ui-1.8.6.custom/js/jquery-ui-1.8.6.custom.min.js", "js/webtoolkit.base64.js?uniqueCache=" + (new Date()).getTime(), "js/jquery.jqplot.min.js", "js/jqplot.dateAxisRenderer.min.js", "js/jqplot.highlighter.min.js", "js/jqplot.cursor.min.js", "js/jquery.tablesorter.min.js", "js/tablesorter_filter.js", "js/jquery.tablesorter.pager.js", "js/moment.min.js", "snappfunctions.js?uniqueCache=" + (new Date()).getTime());
 var jsIEList = new Array("js/excanvas.min.js");

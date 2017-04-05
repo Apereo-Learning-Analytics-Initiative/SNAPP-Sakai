@@ -1,5 +1,5 @@
 //var serverPath = "http://www.snappvis.org/SNAPP2/";
-var serverPath = "http://localhost:8080/SNAPP/";
+var serverPath = "${sakai.host}/SNAPP/";
 var foundLMSForum = false;
 var foundLMSForumExpanded = false;
 var LMS ="";

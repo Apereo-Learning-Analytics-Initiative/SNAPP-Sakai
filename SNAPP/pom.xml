@@ -100,8 +100,6 @@
 	
 	<build>
 		<finalName>SNAPP</finalName>
-		
-	
 		<plugins>
 			<!-- for java 8 we have to use our own copy of plugin.jar.
 			See http://stackoverflow.com/questions/23241600/compilation-error-in-maven-java8-build-cannot-find-symbol-jsobject-getwindow
@@ -119,7 +117,6 @@
 			<plugin>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
-					<!-- copy the plugin jar over as an endorsed jar. TODO this may not be correct location -->
 					<execution>
 						<id>copy-endorsed-dependencies</id>
 						<phase>generate-sources</phase>
@@ -144,8 +141,28 @@
 					</execution>
 				</executions>
 			</plugin>
+			 
+			 <plugin>
+			 <groupId>org.apache.maven.plugins</groupId>
+			 <artifactId>maven-war-plugin</artifactId>
+			 <version>3.0.0</version>
+			 <configuration>
+			 	<filters>
+			      <filter>config.properties</filter>
+			    </filters>
+			   <webResources>
+			     <resource>
+			       <filtering>true</filtering>
+			       <directory>src/main/webapp</directory>
+			       <includes>
+			         <include>**/*.js</include>
+			         <include>**/*.html</include>
+			       </includes>
+			     </resource>
+			   </webResources>
+			 </configuration>
+			 </plugin>
 		</plugins>
-
 	</build>
 
 	<repositories>

@@ -4,7 +4,7 @@
 
 // Global Variables
 //var serverPath = "http://www.snappvis.org/SNAPP2/";
-var serverPath = "http://localhost:8080/SNAPP/";
+var serverPath = "${sakai.host}/SNAPP/";
 
 var forumPostDataStructure = "";
 var annotationRows = "";
@@ -612,7 +612,7 @@ function buildVisualization()
 
   BuildVisulizationHTML += '<div id="PostsOverTime" style="margin-left:2px; width:100%; height:80px;"></div>';
 
-  BuildVisulizationHTML += '<applet name="SNAPP Sociogram" width="100%" height="600" mayscript="true" border="0" codebase="http://localhost:8080/SNAPP/jar" archive="hsqldb-1.8.0.10.jar, wstx-asl-3.2.6.jar, stax-api-1.0.1.jar, jung-visualization-2.0.1.jar, jung-jai-2.0.1.jar, jung-io-2.0.1.jar, jung-graph-impl-2.0.1.jar, jung-api-2.0.1.jar, concurrent-1.3.4.jar, commons-codec-1.3.jar, colt-1.2.0.jar, collections-generic-4.01.jar, microba-0.4.4.3.jar, snapp-sociogram-1.0.jar, jung-algorithms-2.0.1.jar" code="org.apereo.learninganalytics.snapp.SNAPPDisplay">';
+  BuildVisulizationHTML += '<applet name="SNAPP Sociogram" width="100%" height="600" mayscript="true" border="0" codebase="${sakai.host}/SNAPP/jar" archive="hsqldb-1.8.0.10.jar, wstx-asl-3.2.6.jar, stax-api-1.0.1.jar, jung-visualization-2.0.1.jar, jung-jai-2.0.1.jar, jung-io-2.0.1.jar, jung-graph-impl-2.0.1.jar, jung-api-2.0.1.jar, concurrent-1.3.4.jar, commons-codec-1.3.jar, colt-1.2.0.jar, collections-generic-4.01.jar, microba-0.4.4.3.jar, snapp-sociogram-1.0.jar, jung-algorithms-2.0.1.jar" code="org.apereo.learninganalytics.snapp.SNAPPDisplay">';
   BuildVisulizationHTML += '<param name="sna" value="' + param1 +'" />';
   BuildVisulizationHTML += '<param name="java_arguments" value="-Dsun.java2d.opengl=true"/>';
   BuildVisulizationHTML += '<param name="java_arguments" value="-Djnlp.packEnabled=true"/>';
