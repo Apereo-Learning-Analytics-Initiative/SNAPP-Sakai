@@ -32,15 +32,12 @@ function PerformSocialAnalysisSakai()
 
 	// navigates through each of the forum message meta data to isolate the required information 
 	for (i=0; i < allForumPostsTables.length; i++) {
-		metaData = allForumPostsTables[i].innerText;
 		
-		//alert("forumUser: " + forumUser);
-
 		// Isolating the forum user responsible for posting the forum message
-		// TODO: Check if this actually catches the case where there's no user name
-		if (metaData.indexOf('(') > 0) {
-			forumUser = metaData.substring(0,metaData.indexOf('(')-1);
-		} else {
+		// TODO: Check what happens if there's no user name
+		forumUserFull = allForumPostsTables[i].children[0].textContent;
+		forumUser = forumUserFull.substring(0, forumUserFull.indexOf('(')).trim();
+		if (forumUser.length < 1) {
 			forumUser = "unknown";
 		}
 		//alert("forumUser:" + forumUser);
@@ -55,7 +52,8 @@ function PerformSocialAnalysisSakai()
 //		}
 		//alert("forum users:" + forum users[forumUser]);
 		// Isolating the Forum Posted on information.
-		postedOn = metaData.substring(metaData.indexOf(')(')+2, metaData.lastIndexOf(')'));
+		postedOnFull = allForumPostsTables[i].children[1].textContent;
+		postedOn = postedOnFull.substring(postedOnFull.indexOf('(')+1, postedOnFull.indexOf(')'));
 		//alert("postedOn:" + postedOn);
 
 		// Converting date format for Sakai into Moodle format
@@ -72,13 +70,12 @@ function PerformSocialAnalysisSakai()
 
 		// Convert the time to a format compatible with the visualization process
 		var postedOnObj = moment(postedOn);
-		postedOn = postedOnObj.format("D MMMM YYYY")
+		postedOn = postedOnObj.format("D MMMM YYYY");
 		postedOn += ", " + trim(time);
 
 		//retrieving padding left value for each row by finding the rowcount for the particular message.
-		//row = jQuery(".portletMainIframe").contents().find("tr[rowcount="+i+"]")[0].innerHTML;
-		//currentPostHierPadding = row.substring(row.indexOf('em;\"><a '),40);
-		currentPostHierPadding=i;
+		leftPadding = $("table").find(".bogus")[i].style.paddingLeft;
+		currentPostHierPadding = leftPadding.substring(0, leftPadding.indexOf('em'));
 		
 		//alert("padding left :" +currentPostHierPadding); //"   Next post padding:" +nextPostHierPadding);
 
@@ -122,9 +119,6 @@ function PerformSocialAnalysisSakai()
 		}
 
 		totalposts = totalposts + 1;
-
-		// Currently SNAPP does not have an integration with Sakai. Hence it does not handle addition of posts with Sakai as an LMS metric.
-		// Hence we use Moodle as a parameter to help the application recognize the forum posts and process visualization. 
 
 		AddPost(forumUser, reply_to, postedOn, 1, "Sakai");
 	}
