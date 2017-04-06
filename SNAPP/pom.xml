@@ -141,27 +141,28 @@
 					</execution>
 				</executions>
 			</plugin>
-			 
-			 <plugin>
-			 <groupId>org.apache.maven.plugins</groupId>
-			 <artifactId>maven-war-plugin</artifactId>
-			 <version>3.0.0</version>
-			 <configuration>
-			 	<filters>
-			      <filter>config.properties</filter>
-			    </filters>
-			   <webResources>
-			     <resource>
-			       <filtering>true</filtering>
-			       <directory>src/main/webapp</directory>
-			       <includes>
-			         <include>**/*.js</include>
-			         <include>**/*.html</include>
-			       </includes>
-			     </resource>
-			   </webResources>
-			 </configuration>
-			 </plugin>
+
+			<!-- Set up filtering for sakai host -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<filters>
+						<filter>config.properties</filter>
+					</filters>
+					<webResources>
+						<resource>
+							<filtering>true</filtering>
+							<directory>src/main/webapp</directory>
+							<includes>
+								<include>**/*.js</include>
+								<include>**/*.html</include>
+							</includes>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

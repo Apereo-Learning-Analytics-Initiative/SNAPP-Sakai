@@ -382,7 +382,7 @@ function snappviz_Export(file_extension)
 	annotations = jQuery('#annotationgrid').table2CSV({delivery:'value',header:['Date','Annotation']});
         document.exportsnapp.imagedata.value=annotations;
       }
-      alert(file_extension +  ": " + document.exportsnapp.imagedata.value);
+      //alert(file_extension +  ": " + document.exportsnapp.imagedata.value);
       document.exportsnapp.submit();
 }
 
@@ -753,11 +753,9 @@ function buildCredits()
 
 function buildExport()
 
-//TODO: this needs to point to our filesaver
 {
   BuildExportHTML = "";
-  //BuildExportHTML += '<form name="exportsnapp" method="post" action="http://www.snappvis.org/FileSaver/FileSave.php">';
-  BuildExportHTML += '<form name="exportsnapp" method="post" action="http://localhost/FileSaver/FileSave.php">'
+  BuildExportHTML += '<form name="exportsnapp" method="post" action="${sakai.host}/FileSaver/FileSaver.java">'
   BuildExportHTML += '<input type="hidden" id="fileext" name="fileext" value="">';
   BuildExportHTML += '<input type="hidden" name="imagedata">';
   BuildExportHTML += '</form>'; 
@@ -781,8 +779,7 @@ function buildExportHTML()
 	  BuildExportHTML += '}';
   BuildExportHTML += '}';
   BuildExportHTML += '</script>';
-  //BuildExportHTML += '<form name="exportform" method="post" action="http://www.snappvis.org/FileSaver/FileSave.php">';
-  BuildExportHTML += '<form name="exportform" method="post" action="http://localhost/FileSaver/FileSave.php">';
+  BuildExportHTML += '<form name="exportform" method="post" action="${sakai.host}/FileSaver/FileSaver.java">';
   BuildExportHTML += '<h2>Export As:</h2>';
   BuildExportHTML += '<input type="radio" id="fileext" checked name="fileext" value="jpg"> Image (.jpg)<br/>';
   BuildExportHTML += '<input type="radio" id="fileext" name="fileext" value="png"> Image (.png)<br/>';
