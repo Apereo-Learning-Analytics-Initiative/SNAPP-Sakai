@@ -34,7 +34,6 @@ function PerformSocialAnalysisSakai()
 	for (i=0; i < allForumPostsTables.length; i++) {
 		
 		// Isolating the forum user responsible for posting the forum message
-		// TODO: Check what happens if there's no user name
 		forumUserFull = allForumPostsTables[i].children[0].textContent;
 		forumUser = forumUserFull.substring(0, forumUserFull.indexOf('(')).trim();
 		if (forumUser.length < 1) {
