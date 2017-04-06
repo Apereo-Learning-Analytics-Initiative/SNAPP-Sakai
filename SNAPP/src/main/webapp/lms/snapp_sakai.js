@@ -42,15 +42,6 @@ function PerformSocialAnalysisSakai()
 		}
 		//alert("forumUser:" + forumUser);
 
-		// creates an array consisting of all forum users participating
-		// TODO: What is the point of this array?
-//		if (forumUsers[forumUser]) {
-//			forumUsers[forumUser] = forumUsers[forumUser] + 1;
-//		}
-//		else {
-//			forumUsers[forumUser] = 1;
-//		}
-		//alert("forum users:" + forum users[forumUser]);
 		// Isolating the Forum Posted on information.
 		postedOnFull = allForumPostsTables[i].children[1].textContent;
 		postedOn = postedOnFull.substring(postedOnFull.indexOf('(')+1, postedOnFull.indexOf(')'));
