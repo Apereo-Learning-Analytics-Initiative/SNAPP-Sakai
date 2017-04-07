@@ -42,7 +42,8 @@ function PerformSocialAnalysisSakai()
 		//alert("forumUser:" + forumUser);
 
 		// Isolating the Forum Posted on information.
-		postedOnFull = allForumPostsTables[i].children[1].textContent;
+		postedOnSpan = $(allForumPostsTables[i]).children('.textPanelFooter');
+		postedOnFull = postedOnSpan[(postedOnSpan.length)-1].textContent;
 		postedOn = postedOnFull.substring(postedOnFull.indexOf('(')+1, postedOnFull.indexOf(')'));
 		//alert("postedOn:" + postedOn);
 
