@@ -43,6 +43,8 @@ function PerformSocialAnalysisSakai()
 
 		// Isolating the Forum Posted on information.
 		postedOnSpan = $(allForumPostsTables[i]).children('.textPanelFooter');
+		// Since the forum page html has an extra span when logged in as a user, need to get the text content
+		// from the last span
 		postedOnFull = postedOnSpan[(postedOnSpan.length)-1].textContent;
 		postedOn = postedOnFull.substring(postedOnFull.indexOf('(')+1, postedOnFull.indexOf(')'));
 		//alert("postedOn:" + postedOn);
