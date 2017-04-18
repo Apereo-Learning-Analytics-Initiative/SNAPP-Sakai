@@ -39,7 +39,7 @@
 			<dependency>
 				<groupId>org.hsqldb</groupId>
 				<artifactId>hsqldb</artifactId>
-				<version>2.0.0</version>
+				<version>1.8.0.10</version>
 			</dependency>
 			<dependency>
 				<groupId>net.sf.jung</groupId>
@@ -91,10 +91,87 @@
 				<artifactId>snapp-sociogram</artifactId>
 				<version>1.0</version>
 			</dependency>
+			<dependency>
+			<groupId>jdk</groupId>
+			<artifactId>plugin</artifactId>
+			<version>1.8.0_77</version>
+		</dependency>
 		</dependencies>
 	
 	<build>
 		<finalName>SNAPP</finalName>
+		<plugins>
+			<!-- for java 8 we have to use our own copy of plugin.jar.
+			See http://stackoverflow.com/questions/23241600/compilation-error-in-maven-java8-build-cannot-find-symbol-jsobject-getwindow
+			and http://stackoverflow.com/questions/364114/can-i-add-jars-to-maven-2-build-classpath-without-installing-them
+			-->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<compilerArguments>
+						<endorseddirs>${project.build.directory}/endorsed</endorseddirs>
+					</compilerArguments>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-endorsed-dependencies</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeArtifactIds>plugin</includeArtifactIds>
+							<outputDirectory>${project.build.directory}/SNAPP/endorsed</outputDirectory>
+						</configuration>
+					</execution>
+					<!-- copy all dependencies into jar/ directory so they are web accessible for the applet -->
+					<execution>
+						<id>copy-applet-dependencies</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/SNAPP/jar</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Set up filtering for sakai host -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<filters>
+						<filter>config.properties</filter>
+					</filters>
+					<webResources>
+						<resource>
+							<filtering>true</filtering>
+							<directory>src/main/webapp</directory>
+							<includes>
+								<include>**/*.js</include>
+								<include>**/*.html</include>
+							</includes>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
+
+	<repositories>
+		<repository>
+			<id>snapplocal</id>
+			<name>snapplocal</name>
+			<url>file://${project.basedir}/libs</url>
+		</repository>
+	</repositories>
 	
 </project>
