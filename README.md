@@ -52,7 +52,7 @@ Refer to [INSTALL.md](INSTALL.md)
 
 Browser requirements
 -----------------
-SNAPP works with latest versions of Safari and Internet Explorer. 
+SNAPP works with latest version of Safari. 
 
 Firefox no longer supports Java plugins as of Firefox 52 (released March 2017). Mozilla offers an Extended Support Release (ESR) version of Firefox specifically for use by organizations who need extended support for mass deployments. Only Mozilla Firefox 52 ESR 32-bit release will continue offering support for the standards-based plugin support technology required to launch Java Applets. You can download Firefox ESR at ![https://www.mozilla.org/en-US/firefox/organizations/](https://www.mozilla.org/en-US/firefox/organizations/)
 
