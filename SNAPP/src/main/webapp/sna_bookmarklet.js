@@ -132,7 +132,7 @@ traverse(window);
 
 if (foundLMSForum==false)
 {
-	alert("SNAPP is either unable to determine the LMS you are using or you are trying to analyse a page that does not contain a forum. SNAPP works with WebCT Vista, WebCT CE, Blackboard (versions 7, 8 and 9), Sakai(2.8x and 2.9x) and Moodle.");
+	alert("You must be viewing a forum thread to use SNAPP.");
 }
 else
 {
