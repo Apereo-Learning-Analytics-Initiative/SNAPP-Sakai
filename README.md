@@ -1,11 +1,7 @@
-SNAPPSakai-Beta
+SNAPP4Sakai
 ===============
 
-Extending SNAPP forum analysis toll for Sakai CLE (v2.8x &amp; v2.9x).
-
-SNAPPSakai is an adaptation and enhancement of SNAPP(Social Network Analysis & Pedagogical Practices) forum analysis tool for Sakai Collaborative Learning Environment
-(v2.8 & v2.9) by Marist College.
-
+SNAPPSakai is an adaptation and enhancement of SNAPP(Social Network Analysis & Pedagogical Practices) forum analysis tool for the Sakai CLE.
 
 SNAPP was developed as part of a joint project, “‘Seeing’ networks: Visualizing and evaluating student learning networks” -
 an Office for Learning and Teaching (previously Australian Learning and Teaching Council) funded project focused towards 
@@ -18,6 +14,7 @@ The project included both National and International research partners:
 * The University of Queensland – Professor Phil Long and Ms Aneesha Bakharia
 * University of British Columbia (Canada) – Dr Leah Macfadyen
 
+Support for Sakai 2.8 & 2.9 was developed by Marist College and enhanced for Sakai 11+ by Notre Dame and Flying Kite Australia.
 
 What is SNAPP?
 ---------------------------
@@ -28,7 +25,6 @@ patterns of user behaviour – at any stage of course progression. SNAPP has bee
 from various commercial and open source learning management systems (LMS) such as BlackBoard (including the former WebCT),
 Moodle and now Sakai. SNAPP is compatible for both Mac and PC users and operates in Chrome and Firefox.
 
-
 Most of the student data generated from Learning Management Systems (LMS) include reports on the number of sessions 
 (log-ins), dwell time (how long the log-in lasted) and number of downloads. This tells us a lot about content retrieval 
 in a transmission model of learning and teaching, but not about how students are interacting with each other in more 
@@ -36,7 +32,7 @@ socio-constructivist practice. Discussion forum activity is a good indicator of 
 captured by most LMS. SNAPP uses information on who posted and replied to whom, and what major discussions were about, 
 and how expansive they were, to analyse the interactions of a forum and display it in a Social Network Diagram. 
 
-![SNAPP in Sakai v2.9] (resources/SNAPPSakai.PNG)
+![SNAPP in Sakai](resources/SNAPPSakai.PNG)
 What can a network diagram tell me?
 ------------------------------------
 
@@ -49,14 +45,31 @@ A network diagram is a visual depiction of all interactions occurring among stud
   * allow your students to benchmark their performance without the need for marking.
 
 
-Install & Deployment of SNAPP
+Installing SNAPP
 ------------------------------
-Refer to https://github.com/sandeepmjay/SNAPPSakai-Beta/blob/master/INSTALL.md
+Refer to [INSTALL.md](INSTALL.md)
+
+
+Browser requirements
+-----------------
+SNAPP works with latest version of Safari. 
+
+Firefox no longer supports Java plugins as of Firefox 52 (released March 2017). Mozilla offers an Extended Support Release (ESR) version of Firefox specifically for use by organizations who need extended support for mass deployments. Only Mozilla Firefox 52 ESR 32-bit release will continue offering support for the standards-based plugin support technology required to launch Java Applets. You can download Firefox ESR at ![https://www.mozilla.org/en-US/firefox/organizations/](https://www.mozilla.org/en-US/firefox/organizations/)
+
+
+
+Using SNAPP within Forums
+-----------
+
+1. Login to your Sakai CLE instance. Choose a course with Forums.
+1. Expand the Forum thread (View mode - by Conversation) for the forum to be analysed.
+1. Run the SNAPP V2 Beta bookmarklet application on the expanded forum.
+1. Accept the permissions to run the app and click the Run button.
+1. Scroll to the end of the forum thread and you should see the SNAPP visualization embedded within your forum page.
 
 
 SNAPP Demo Video
 --------------------
-A short screen movie which shows tool deployment and some of the tool nuances.
 
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/JVyULPbb0Kw/0.jpg)](http://www.youtube.com/watch?v=JVyULPbb0Kw)
+[![Demo](http://img.youtube.com/vi/Yut0ZnorEYE/0.jpg)](https://www.youtube.com/watch?v=Yut0ZnorEYE)
 
